@@ -3,7 +3,7 @@ import { StoreModule } from '@ngrx/store';
 import { FiltersReducer } from '../../reducer/filters.reducer';
 import { FiltersModule } from './../../filters.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { filtersConfig } from '../../services/filters.service';
 import { EnumFilterContainerComponent } from './enum-filter-container.component';
 
 describe('EnumFilterContainerComponent', () => {
@@ -12,7 +12,10 @@ describe('EnumFilterContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FiltersModule, StoreModule.provideStore({ filters: FiltersReducer })]
+      imports: [FiltersModule, StoreModule.provideStore({ filters: FiltersReducer })],
+			providers: [
+				{ provide: filtersConfig, useValue: null }
+			]
     })
       .compileComponents();
   }));
@@ -25,7 +28,7 @@ describe('EnumFilterContainerComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should be created', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should be created', () => {
+    expect(component).toBeTruthy();
+  });
 });
