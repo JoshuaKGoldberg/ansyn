@@ -1,4 +1,4 @@
-import { SelectLayerAction, UnselectLayerAction } from '@ansyn/menu-items/layers-manager/actions/layers.actions';
+import { SelectLeafLayerAction, UnselectLeafLayerAction } from '@ansyn/menu-items/layers-manager/actions/layers.actions';
 import { ILayerTreeNodeLeaf } from '@ansyn/menu-items/layers-manager/models/layer-tree-node-leaf';
 import { EffectsRunner, EffectsTestingModule } from '@ngrx/effects/testing';
 import { async, inject, TestBed } from '@angular/core/testing';
@@ -213,7 +213,7 @@ describe('MapAppEffects', () => {
 			children: []
 		};
 
-		const action: SelectLayerAction = new SelectLayerAction(staticLeaf);
+		const action: SelectLeafLayerAction = new SelectLeafLayerAction(staticLeaf);
 		const imagery1 = {
 			addVectorLayer: () => {
 
@@ -238,7 +238,7 @@ describe('MapAppEffects', () => {
 			children: []
 		};
 
-		let action: UnselectLayerAction = new UnselectLayerAction(staticLeaf);
+		let action: UnselectLeafLayerAction = new UnselectLeafLayerAction(staticLeaf);
 		let imagery1 = {
 			removeVectorLayer: () => {
 

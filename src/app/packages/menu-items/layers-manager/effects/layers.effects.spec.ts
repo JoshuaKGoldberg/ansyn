@@ -9,7 +9,7 @@ import { HttpModule } from '@angular/http';
 import { DataLayersService, LayerRootsBundle } from '../services/data-layers.service';
 import { StoreModule } from '@ngrx/store';
 import { LayersReducer } from '../reducers/layers.reducer';
-import { BeginLayerTreeLoadAction, LayerTreeLoadedAction, SelectLayerAction } from './../actions/layers.actions';
+import { BeginLayerTreeLoadAction, LayerTreeLoadedAction, SelectLeafLayerAction } from './../actions/layers.actions';
 import { Observable } from 'rxjs/Observable';
 import { layersConfig } from '@ansyn/menu-items/layers-manager';
 
@@ -52,13 +52,13 @@ describe('LayersEffects', () => {
         layersEffects.beginLayerTreeLoad$.subscribe((result: LayerTreeLoadedAction) => {
             expect(dataLayersService.getAllLayersInATree).toHaveBeenCalledWith('blabla');
             expect(result instanceof LayerTreeLoadedAction ||
-                result instanceof SelectLayerAction).toBeTruthy();
+                result instanceof SelectLeafLayerAction).toBeTruthy();
             
             if (result instanceof LayerTreeLoadedAction) {
                 expect(result.payload).toEqual(<any>loadedTreeBundle);
             }
 
-            if (result instanceof SelectLayerAction) {
+            if (result instanceof SelectLeafLayerAction) {
                 expect(result.payload).toEqual(<any>staticLeaf);
             }
         });

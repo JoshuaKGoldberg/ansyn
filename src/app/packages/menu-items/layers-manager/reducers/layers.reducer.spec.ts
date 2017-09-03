@@ -1,4 +1,4 @@
-import { BeginLayerTreeLoadAction, LayerTreeLoadedAction, SelectLayerAction, UnselectLayerAction } from '../actions/layers.actions';
+import { BeginLayerTreeLoadAction, LayerTreeLoadedAction, SelectLeafLayerAction, UnselectLeafLayerAction } from '../actions/layers.actions';
 import { ILayerTreeNodeRoot } from './../models/layer-tree-node-root';
 import { ILayerTreeNodeLeaf } from './../models/layer-tree-node-leaf';
 import { ILayerTreeNode } from './../models/layer-tree-node';
@@ -32,7 +32,7 @@ describe('LayersReducer', () => {
 
         let layers: ILayerTreeNodeRoot[] = [staticLayer, dynamicLayer, complexLayer];
         
-        let action: SelectLayerAction = new SelectLayerAction(staticLeaf);
+        let action: SelectLeafLayerAction = new SelectLeafLayerAction(staticLeaf);
 
         let result: ILayerState = LayersReducer({ layers: layers, selectedLayers: [staticLeaf] }, action);
 
@@ -48,7 +48,7 @@ describe('LayersReducer', () => {
 
         let layers: ILayerTreeNodeRoot[] = [staticLayer, dynamicLayer, complexLayer];
 
-        let action: SelectLayerAction = new SelectLayerAction(staticLeaf);
+        let action: SelectLeafLayerAction = new SelectLeafLayerAction(staticLeaf);
 
         let result: ILayerState = LayersReducer({ layers: layers, selectedLayers: [staticLeaf] }, action);
 
@@ -64,7 +64,7 @@ describe('LayersReducer', () => {
 
         let layers: ILayerTreeNodeRoot[] = [staticLayer, dynamicLayer, complexLayer];
 
-        let action: UnselectLayerAction = new UnselectLayerAction(staticLeaf);
+        let action: UnselectLeafLayerAction = new UnselectLeafLayerAction(staticLeaf);
 
         let result: ILayerState = LayersReducer({ layers: layers, selectedLayers: [staticLeaf] }, action);
 
@@ -80,7 +80,7 @@ describe('LayersReducer', () => {
 
         let layers: ILayerTreeNodeRoot[] = [staticLayer, dynamicLayer, complexLayer];
 
-        let action: UnselectLayerAction = new UnselectLayerAction(staticLeaf);
+        let action: UnselectLeafLayerAction = new UnselectLeafLayerAction(staticLeaf);
 
         let result: ILayerState = LayersReducer({ layers: layers, selectedLayers: [] }, action);
 
